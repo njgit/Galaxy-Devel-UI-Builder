@@ -131,47 +131,6 @@ sub output {
   $p->paste_last_child( $self->cursor );  
 }
 
-# this has loads of sub tags that I have yet to put in
-sub assert_contents {
-  my $self = shift;
-
-  my $p = XML::Twig::Elt->new('assert_contents');
-
-  $p->paste_last_child( $self->cursor ); 
-}
-
-sub page {
-  my $self = shift;   
-  my $p = XML::Twig::Elt->new('page');
-
-  $p->paste_last_child( $self->cursor ); 
-}
-
-sub code {
-  my $self = shift;
-    my @att = @_;   
-  my $p = XML::Twig::Elt->new('code');
-  $p->set_att( @att );
-  $p->paste_last_child( $self->cursor ); 
-}
-
-
-sub requirements {
-  my $self = shift;
-      my @att = @_;   
-  my $p = XML::Twig::Elt->new('requirements');
-  $p->set_att( @att );
-  $p->paste_last_child( $self->cursor ); 
-}
-
-sub requirement {
-  my $self = shift;
-      my @att = @_;   
-  my $p = XML::Twig::Elt->new('requirement');
-  $p->set_att( @att );
-  $p->paste_last_child( $self->cursor ); 
-}
-
 sub conditional {
 
   my $self = shift;
@@ -210,7 +169,7 @@ sub filter {
 sub request_param_translation {
   my $self = shift;
   my @att = @_;
-  my $p = XML::Twig::Elt->new('request_param_translation');
+  my $p = XML::Twig::Elt->new('when');
   $p->set_att( @att );
   my $cursor = $p->paste_last_child( $self->cursor );  
 }
@@ -220,7 +179,7 @@ sub request_param_translation {
 sub request_param {
   my $self = shift;
   my @att = @_;
-  my $p = XML::Twig::Elt->new('request_param');
+  my $p = XML::Twig::Elt->new('when');
   $p->set_att( @att );
   my $cursor = $p->paste_last_child( $self->cursor );  
 }
@@ -228,19 +187,10 @@ sub request_param {
 sub append_param {
   my $self = shift;
   my @att = @_;
-  my $p = XML::Twig::Elt->new('append_param');
+  my $p = XML::Twig::Elt->new('when');
   $p->set_att( @att );
   my $cursor = $p->paste_last_child( $self->cursor );  
 }
-#This tag set is optionally contained within the <data> tag set and is the container tag set for the following <when> tag set.
-sub change_format {
-  my $self = shift;
-   my @att = @_;
-  my $p = XML::Twig::Elt->new('change_format');
-  $p->set_att( @att );
-  my $cursor = $p->paste_last_child( $self->cursor );  
-}
-
 
 sub value_translation {
   my $self = shift;
@@ -404,7 +354,17 @@ sub help {
 
 1;
 
-__END__
+
+
+=pod
+
+=head1 NAME
+
+Galaxy::Devel::UI::Builder - UI specification in perl for Galaxy Platform
+
+=head1 VERSION
+
+version 0.001
 
 =SYNOPSIS
 
@@ -448,8 +408,6 @@ __END__
   </tests>
   <help>This tool computes GC content from a FASTA file.</help>
 </tool>
- 
-=cut 
 
 =DESCRIPTION
 
@@ -517,6 +475,23 @@ __END__
 
  Aliases for some of the official tags:
  command: cmd, inputs: in, outputs: out, description: desc, conditional: cond, options: opts, option: opt
+
+=head1 AUTHOR
+
+NJWalker <njwalker@gmail.com>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by NJWalker.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+
+
 
 
