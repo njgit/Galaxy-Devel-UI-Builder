@@ -427,9 +427,9 @@ __END__
  $g->help("This tool computes GC content from a FASTA file.");
 
  # print as string  
- $g->xml->sprint
+ print $g->xml->sprint;
  
- Produces:
+ Produces Output:
  
  <tool hidden="false" id="fa_gc_content_1" name="Compute GC contents" version="0.001">
   <description>Compute GC content </description>
@@ -461,11 +461,11 @@ __END__
  The module is essentially a wrapper around XML::Twig. Each method adds a twig to an xml tree, and sets the cursor
  following the examples outlined below. 
   
- The methods follow the tag sets at
+ The modules methods follow the tag sets at
  http://wiki.g2.bx.psu.edu/Admin/Tools/Tool%20Config%20Syntax#A.3Ctool.3E_tag_set
  
- A Tool XML file is normally composed of an encompasing tool tag, and then several top level tags. Commonly used top level 
- tags in a Galaxy Tool XML file are description: command, input, outputs, tests & help, as below:
+ A Galaxy Tool XML file is normally composed of an encompasing tool tag, and then several top level tags. Commonly used top level 
+ tags are description, command, inputs, outputs, tests & help, as below:
  
  <tool ...
   <description ...
@@ -513,7 +513,7 @@ __END__
     
  NOTE: There is no verification that the correct options/attributes have been specified in each tag statement, nor whether 
  the correct tags have been nested within each other. You have to ensure this by following the galaxy tag set specification
- given above. There plan is to add checking in the future. 
+ given above. There is a plan to add a form of checking in the future. 
 
  Aliases for some of the official tags:
  command: cmd, inputs: in, outputs: out, description: desc, conditional: cond, options: opts, option: opt
